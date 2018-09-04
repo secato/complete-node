@@ -1,0 +1,15 @@
+{
+  "name": "simple-terminal-app",
+  "version": "1.0.0",
+  "description": "A simple terminal app using input/output and filesystem",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felipe Secato",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.10",
+    "yargs": "^12.0.1"
+  }
+}
