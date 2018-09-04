@@ -32,9 +32,9 @@ function addNote(title, body) {
     // avoid notes with the same titles
     let duplicateNotes = notes.filter(note => note.title === title)
     if (duplicateNotes.length === 0) {
-        
+
         // adding a note object with title and body properties
-        const note = {title, body}
+        const note = { title, body }
         notes.push(note)
         saveNotes(notes)
         return note
@@ -46,10 +46,15 @@ function getAll() {
 }
 
 function getNote(title) {
+    let notes = fetchNotes()
+    return notes.filter(note => note.title === title)[0]
 
 }
 
 function removeNote(title) {
+    let notes = fetchNotes()
+    let filteredNotes = notes.filter(note => note.title !== title)
+    saveNotes(filteredNotes)
 }
 
 module.exports = { addNote, getAll, getNote, removeNote }
