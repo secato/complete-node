@@ -21,3 +21,27 @@ console.log('Types:')
 console.log(typeof personString)
 console.log(typeof personObj)
 
+
+// writing to file system
+const fs = require('fs')
+const path = require('path')
+const filePath = path.join(__dirname, 'notes.json')
+console.log(filePath)
+
+
+const objNote = {
+    title: 'This is my note',
+    body: 'Need to do this'
+}
+
+const stringNote = JSON.stringify(objNote)
+fs.writeFileSync(filePath, stringNote)
+
+const noteStringFromFile = fs.readFileSync(filePath)
+
+const note = JSON.parse(noteStringFromFile)
+console.log(typeof note)
+console.log(note.title, ' - ', note.body)
+
+
+
