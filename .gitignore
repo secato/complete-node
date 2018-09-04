@@ -1,6 +1,10 @@
 
 # Created by https://www.gitignore.io/api/code,node,windows
 
+## NOTES APP
+notes-data.json
+notes-data.json.corrupt
+
 ### Code ###
 # Visual Studio Code - https://code.visualstudio.com/
 .settings/

@@ -1,6 +1,5 @@
 console.log('Starting app')
 
-const fs = require('fs')
 const _ = require('lodash')
 const yargs = require('yargs')
 
@@ -11,11 +10,14 @@ const argv = yargs.argv
 const command = argv._[0]
 
 console.log('Command: ', command)
-console.log('Yargs', argv)
 
 switch (command) {
     case 'add':
-        notes.addNote(argv.title, argv.body)
+        const note = notes.addNote(argv.title, argv.body)
+        if(note)
+            console.log('Note created - ', note.title)
+        else
+            console.log('Note already exists!')
         break;
     case 'list':
         notes.getAll()
