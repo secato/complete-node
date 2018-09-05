@@ -1,9 +1,8 @@
-console.log('Starting app')
-
 const _ = require('lodash')
 const yargs = require('yargs')
-
 const notes = require('./notes.js')
+
+console.log('Starting app')
 
 // getting the yargs arguments object
 const argv = yargs.argv

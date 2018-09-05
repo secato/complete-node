@@ -58,6 +58,7 @@ function removeNote(title) {
 }
 
 function printNote(note) {
+    debugger
     console.log('------------')
     console.log(`Title: ${note.title}`)
     console.log(`Body: ${note.body}`)
