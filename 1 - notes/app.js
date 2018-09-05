@@ -17,37 +17,37 @@ switch (command) {
         note = notes.addNote(argv.title, argv.body)
         if (note) {
             console.log('\nNote created')
-            console.log('------------')
-            console.log(`Title: ${note.title}`)
-            console.log(`Body: ${note.body}`)
+            notes.printNote(note)
         }
         else {
-            console.log('Note already exists!')
+            console.log('\n------------\nNote already exists')
         }
         break;
 
     case 'list':
-        notes.getAll()
+        console.log('\nNotes list')
+        notes.getAll().forEach(note => notes.printNote(note))
         break;
 
     case 'read':
         note = notes.getNote(argv.title)
         if (note) {
             console.log('\nNote read')
-            console.log('------------')
-            console.log(`Title: ${note.title}`)
-            console.log(`Body: ${note.body}`)
+            notes.printNote(note)
         }
         else {
-            console.log('Note already exists!')
+            console.log('\n------------\nNote not found')
         }
         break;
 
     case 'remove':
-        notes.removeNote(argv.title)
+        let noteRemoved = notes.removeNote(argv.title)
+        console.log('\n------------')
+        console.log(noteRemoved ? 'Note was removed' : 'Note not found')
         break;
 
     default:
+        console.log('\n------------')
         console.log('Command not recognized')
         break;
 }

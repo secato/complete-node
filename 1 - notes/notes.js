@@ -42,19 +42,26 @@ function addNote(title, body) {
 }
 
 function getAll() {
-
+    return fetchNotes()
 }
 
 function getNote(title) {
     let notes = fetchNotes()
     return notes.filter(note => note.title === title)[0]
-
 }
 
 function removeNote(title) {
     let notes = fetchNotes()
     let filteredNotes = notes.filter(note => note.title !== title)
     saveNotes(filteredNotes)
+    return notes.length !== filteredNotes.length
 }
 
-module.exports = { addNote, getAll, getNote, removeNote }
+function printNote(note) {
+    console.log('------------')
+    console.log(`Title: ${note.title}`)
+    console.log(`Body: ${note.body}`)
+}
+
+
+module.exports = { addNote, getAll, getNote, removeNote, printNote }
