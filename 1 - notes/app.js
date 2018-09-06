@@ -1,22 +1,15 @@
-const _ = require('lodash')
-const yargs = require('yargs')
-const notes = require('./notes.js')
+const notes = require('./notes')
+const args = require('./args')
 
-console.log('Starting app')
-
-// getting the yargs arguments object
-const argv = yargs.argv
+const argv = args.argv
 const command = argv._[0]
 
-console.log('Command: ', command)
-
-let note = undefined
 switch (command) {
     case 'add':
-        note = notes.addNote(argv.title, argv.body)
-        if (note) {
+        let noteAdded = notes.addNote(argv.title, argv.body)
+        if (noteAdded) {
             console.log('\nNote created')
-            notes.printNote(note)
+            notes.printNote(noteAdded)
         }
         else {
             console.log('\n------------\nNote already exists')
@@ -29,7 +22,7 @@ switch (command) {
         break;
 
     case 'read':
-        note = notes.getNote(argv.title)
+        let note = notes.getNote(argv.title)
         if (note) {
             console.log('\nNote read')
             notes.printNote(note)
@@ -48,6 +41,7 @@ switch (command) {
     default:
         console.log('\n------------')
         console.log('Command not recognized')
+        args.showHelp()
         break;
 }
 
