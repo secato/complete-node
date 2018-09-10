@@ -1,6 +1,7 @@
 require('dotenv').config()
 const yargs = require('yargs')
 const geocode = require('./geocode/geocode')
+const weather = require('./weather/weather')
 
 const argv = yargs
     .options({
@@ -21,27 +22,18 @@ geocode.geocodeAddress(argv.address, (errorMessage, results) => {
         console.log(errorMessage)
     } else {
         console.log(results)
-        const latitude = results.latitude
-        const longitude = results.longtitude
-        getWeather(latitude, longitude)
+        console.log('')
+        const { latitude, longtitude } = results
+        weather.getWeather({ latitude, longtitude }, (errorMessage, results) => {
+            if (errorMessage) {
+                console.log(errorMessage)
+            } else {
+                console.log(results)
+            }
+        })
     }
 
 })
 
-function getWeather(latitude, longitude) {
-    const request = require('request');
-    const url = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${latitude},${longitude}`;
-    console.log('Weather URL: ', url)
-    request({
-        url,
-        json: true
-    }, (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-            console.log(body.currently.temperature);
-        }
-        else {
-            console.log('Unable to fetch weather.');
-        }
-    });
-}
+
 
