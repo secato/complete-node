@@ -11,11 +11,11 @@ axios.get(geocodeURL)
     .then(response => {
         var latitude = response.data.results[0].locations[0].latLng.lat
         var longtitude = response.data.results[0].locations[0].latLng.lng
-        const weatherURL = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${latitude},${longtitude}`
-
         const address = response.data.results[0].locations[0]
+
         console.log(`${address.adminArea3}, ${address.adminArea5}, ${address.adminArea6}, ${address.street}`)
 
+        const weatherURL = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${latitude},${longtitude}`
         return axios.get(weatherURL)
     })
     .then(response => {
