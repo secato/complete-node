@@ -55,4 +55,5 @@ app.get('/pingpong', (req, res) => {
     })
 })
 
-app.listen(3003, console.log('Server started'))
+const port = process.env.PORT || 3003
+app.listen(port, () => { console.log('Server started') })
