@@ -24,12 +24,4 @@ function formattedAddress(address) {
     return `${address.adminArea3}, ${address.adminArea5}, ${address.adminArea6}, ${address.street}`
 }
 
-// function printAddress(address) {
-//     console.log('Estado:', address.adminArea3)
-//     console.log('Cidade:', address.adminArea5)
-//     console.log('Bairro:', address.adminArea6)
-//     console.log('Rua:', address.street)
-// }
-
-
 module.exports = { geocodeAddress }
