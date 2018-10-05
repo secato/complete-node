@@ -27,9 +27,9 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use((req, res, next) => {
-    res.render('maintenance')
-})
+// app.use((req, res, next) => {
+//     res.render('maintenance')
+// })
 
 app.use(express.static('public'))
 
@@ -55,5 +55,5 @@ app.get('/pingpong', (req, res) => {
     })
 })
 
-const port = process.env.PORT || 3003
+const port = process.env.PORT || 3000
 app.listen(port, () => { console.log('Server started') })
