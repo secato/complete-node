@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectID } = require('mongodb')
 
 MongoClient
   .connect('mongodb://localhost:27017/TuduApp', { useNewUrlParser: true })
@@ -19,3 +19,7 @@ MongoClient
     client.close()
   })
   .catch(err => console.error(err))
+
+// // creating object id on the fly
+// const obj = new ObjectID()
+// console.log(obj)
